@@ -29,7 +29,7 @@ function ImageObj(fileName) {
   this.fileName = fileName;
   this.clicked = 0;
   this.shown = 0;
-  ImageObj.allImages.push(this);
+  objArr.push(this);
 }
 // adds two class arrays, one for used images and one for all images
 ImageObj.allImages = [];
@@ -100,12 +100,16 @@ function clearImgs(){
 
 // helper that creates the results display
 function displayResults(){
-  for(var i = 0; i < ImageObj.allImages.length; i++){
+  for(var i = 0; i < objArr.length; i++){
     var imageLI = document.createElement('li');
     var ul = document.getElementById('results');
 
+    // takes off the extensions of the file names
+    var filePath = objArr[i].fileName;
+    var name = filePath.substring(0, filePath.length-4);
+
     // Create the text inside
-    imageLI.textContent = `${ImageObj.allImages[i].fileName}: ${ImageObj.allImages[i].clicked} ${(ImageObj.allImages[i].clicked === 1)?'vote':'votes'}`;
+    imageLI.textContent = `${name}: ${objArr[i].clicked} ${(objArr[i].clicked === 1)?'vote':'votes'}`;
     ul.appendChild(imageLI);
   }
 }
@@ -119,7 +123,7 @@ function createEndText(){
 }
 
 // sets global variables
-var amtToDisplay = 3;
+var amtToDisplay = 7;
 var objArr = ImageObj.allImages;
 var imgWidth = 600/amtToDisplay;
 var appendTo = document.getElementById('mainSection');
