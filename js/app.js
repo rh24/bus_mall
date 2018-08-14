@@ -86,6 +86,7 @@ function refreshImages(){
   }
   else {
     // here is where you notify users
+    createEndText();
     displayResults();
   }
 }
@@ -97,14 +98,24 @@ function clearImgs(){
   }
 }
 
+// helper that creates the results display
 function displayResults(){
   for(var i = 0; i < ImageObj.allImages.length; i++){
     var imageLI = document.createElement('li');
     var ul = document.getElementById('results');
-    
+
+    // Create the text inside
     imageLI.textContent = `${ImageObj.allImages[i].fileName}: ${ImageObj.allImages[i].clicked} votes`;
     ul.appendChild(imageLI);
   }
+}
+
+// helper function that tells the user the end of voting
+function createEndText(){
+  var finishText = document.createElement('h1');
+  finishText.textContent = '25 Votes casted, results to the left';
+  finishText.width = 650;
+  appendTo.appendChild(finishText);
 }
 
 // sets global variables
