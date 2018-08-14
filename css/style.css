@@ -103,3 +103,7 @@ h1 {
 h2 {
   margin: 20px;
 }
+
+canvas {
+  margin: 20px 0px;
+}
