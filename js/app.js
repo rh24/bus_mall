@@ -108,7 +108,7 @@ function displayResults(){
 }
 
 // sets global variables
-var amtToDisplay = 1;
+var amtToDisplay = 3;
 var objArr = ImageObj.allImages;
 var imgWidth = 600/amtToDisplay;
 var appendTo = document.getElementById('mainSection');
