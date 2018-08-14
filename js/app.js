@@ -105,7 +105,7 @@ function displayResults(){
     var ul = document.getElementById('results');
 
     // Create the text inside
-    imageLI.textContent = `${ImageObj.allImages[i].fileName}: ${ImageObj.allImages[i].clicked} votes`;
+    imageLI.textContent = `${ImageObj.allImages[i].fileName}: ${ImageObj.allImages[i].clicked} ${(ImageObj.allImages[i].clicked === 1)?'vote':'votes'}`;
     ul.appendChild(imageLI);
   }
 }
