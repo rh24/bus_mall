@@ -27,6 +27,7 @@ function initializeImg() {
 // image object constructors
 function ImageObj(fileName) {
   this.fileName = fileName;
+  this.name = fileName.substring(0, fileName.length-4);
   this.clicked = 0;
   this.shown = 0;
   objArr.push(this);
@@ -86,7 +87,8 @@ function refreshImages(){
   }
   else {
     // here is where you notify users
-    createEndText();
+    createChart(createCanvas());
+    // createEndText();
     displayResults();
   }
 }
@@ -104,12 +106,8 @@ function displayResults(){
     var imageLI = document.createElement('li');
     var ul = document.getElementById('results');
 
-    // takes off the extensions of the file names
-    var filePath = objArr[i].fileName;
-    var name = filePath.substring(0, filePath.length-4);
-
     // Create the text inside
-    imageLI.textContent = `${name}: ${objArr[i].clicked} ${(objArr[i].clicked === 1)?'vote':'votes'}`;
+    imageLI.textContent = `${objArr[i].name}: ${objArr[i].clicked} ${(objArr[i].clicked === 1)?'vote':'votes'}`;
     ul.appendChild(imageLI);
   }
 }
@@ -122,6 +120,66 @@ function createEndText(){
   appendTo.appendChild(finishText);
 }
 
+// function that creates a random color
+function randomColor(){
+  var color = '#';
+  for(var i = 0; i < 6; i++){
+    var hexString = Math.floor(Math.random()*15);
+    color += hexString.toString(16);
+  }
+
+  // returns the color
+  return color;
+}
+
+// function to create the canvas tag
+function createCanvas(){
+  var containingDiv = document.createElement('div');
+  var canvas = document.createElement('canvas');
+  containingDiv.appendChild(canvas);
+  return canvas;
+}
+
+function createChart(chart){
+  var ctx = chart.getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+}
+
 // sets global variables
 var amtToDisplay = 7;
 var objArr = ImageObj.allImages;
@@ -132,3 +190,4 @@ var clicks = 0;
 // initialize variables and creates images
 initializeImg();
 refreshImages();
+console.log(randomColor());
