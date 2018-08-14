@@ -129,10 +129,13 @@ function displayResults(){
 
 // helper function that tells the user the end of voting
 function createEndText(){
-  var finishText = document.createElement('h1');
+  var finishText = document.createElement('h2');
   finishText.textContent = '25 Votes casted, results to the left';
   finishText.width = 650;
-  document.getElementById('bodyText').appendChild(finishText);
+  
+  var bodyText = document.getElementById('instructions');
+  clearTag(bodyText);
+  bodyText.appendChild(finishText);
 }
 
 // function that creates a random color

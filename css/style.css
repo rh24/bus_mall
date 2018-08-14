@@ -107,3 +107,7 @@ h2 {
 canvas {
   margin: 20px 0px;
 }
+
+h2, #results, .bodyText {
+  font-family: 'Kaushan Script', cursive;
+}
