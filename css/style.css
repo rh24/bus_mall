@@ -1,3 +1,66 @@
+aside, footer, header, main, section, div{
+  border: 1px solid black;
+  margin: 0px;
+  padding: 0px;
+}
+
 header, main, footer{
   width: 960px;
+}
+
+aside, section {
+  display: inline-block;
+  height: 100%;
+}
+
+header {
+  height: 200px;
+}
+
+main {
+  height: 650px;
+}
+
+footer {
+  height: 200px;
+}
+
+aside{
+  height: 100%;
+  width: 250px;
+}
+
+section {
+  vertical-align: top;
+  text-align: center;
+  width: 700px;
+}
+
+#mainSection {
+  height: 79%;
+}
+
+.bodyText{
+  height: 20%;
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+img {
+  margin: 2px;
+}
+
+img:hover {
+  border: 1px solid yellow;
+}
+
+ul {
+  margin: 10px;
+}
+
+h1 {
+  font-family: cursive, sans-serif, serif;
+  font-size: 20px;
+  margin: 20px;
 }
