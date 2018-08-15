@@ -62,9 +62,10 @@ section {
 }
 
 #mainSection {
-  height: 500px;
+  height: 475px;
   overflow: scroll;
   margin-bottom: 3px;
+  padding: 25px 20px 0px 20px;
 }
 
 #mainSection img{
@@ -137,4 +138,8 @@ nav ul li {
   /* margin: 0px; */
   /* padding: 0px; */
   background-color: #D46A6A;
+}
+
+p{
+  line-height: 9;
 }

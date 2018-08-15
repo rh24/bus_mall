@@ -10,7 +10,6 @@ ImageObj.usedImgs = [];
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
 var amtToDisplay = 7;
-var imgWidth = 600/amtToDisplay;
 var appendTo = document.getElementById('mainSection');
 var clicks = 0;
 
@@ -52,8 +51,6 @@ function createImage(imgObj){
   var imgTag = document.createElement('img');
   imgTag.src = `img/${imgObj.fileName}`;
   imgTag.alt = imgObj.fileName;
-  imgTag.width = imgWidth;
-  imgTag.height = imgWidth;
   appendTo.appendChild(imgTag);
 
   // returns the tag
