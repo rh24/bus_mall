@@ -9,7 +9,7 @@ ImageObj.usedImgs = [];
 // sets global variables
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
-var amtToDisplay = 10;
+var amtToDisplay = 3;
 var appendTo = document.getElementById('mainSection');
 var clicks = 0;
 
@@ -139,7 +139,7 @@ function createEndText(){
   var finishText = document.createElement('h2');
   finishText.textContent = '25 Votes casted, results to the left';
   finishText.width = 650;
-  
+
   // appends text to let user know to look at results
   var bodyText = document.getElementById('instructions');
   clearTag(bodyText);
@@ -202,6 +202,16 @@ function createChart(chart, clicked, colors, borderColors){
   });
 }
 
+// function for refreshing images when 
+function outOfTB(){
+  var textbox = document.getElementById('itemNum');
+  textbox.addEventListener('blur', function(){
+    amtToDisplay = Number(textbox.value);
+    refreshImages();
+  });
+}
+
 // initialize variables and creates images
 initializeImg();
+outOfTB();
 refreshImages();
