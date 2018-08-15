@@ -16,34 +16,44 @@ var clicks = 0;
 
 // initializes all the images by making new objects
 function initializeImg() {
-  new ImageObj('bag.jpg');
-  new ImageObj('banana.jpg');
-  new ImageObj('bathroom.jpg');
-  new ImageObj('breakfast.jpg');
-  new ImageObj('bubblegum.jpg');
-  new ImageObj('boots.jpg');
-  new ImageObj('chair.jpg');
-  new ImageObj('cthulhu.jpg');
-  new ImageObj('dog-duck.jpg');
-  new ImageObj('dragon.jpg');
-  new ImageObj('pen.jpg');
-  new ImageObj('pet-sweep.jpg');
-  new ImageObj('scissors.jpg');
-  new ImageObj('shark.jpg');
-  new ImageObj('sweep.png');
-  new ImageObj('tauntaun.jpg');
-  new ImageObj('unicorn.jpg');
-  new ImageObj('usb.gif');
-  new ImageObj('water-can.jpg');
-  new ImageObj('wine-glass.jpg');
+  // loads items from local storage
+  var loadedItems = JSON.parse(localStorage.getItem('items'));
+  // if it exists, load data from previous
+  if(loadedItems) {
+    for (var i = 0; i < loadedItems.length; i++){
+      new ImageObj(loadedItems[i].fileName, loadedItems[i].clicked, loadedItems[i].shown);
+    }
+  }
+  else { // else create new items
+    new ImageObj('bag.jpg');
+    new ImageObj('banana.jpg');
+    new ImageObj('bathroom.jpg');
+    new ImageObj('breakfast.jpg');
+    new ImageObj('bubblegum.jpg');
+    new ImageObj('boots.jpg');
+    new ImageObj('chair.jpg');
+    new ImageObj('cthulhu.jpg');
+    new ImageObj('dog-duck.jpg');
+    new ImageObj('dragon.jpg');
+    new ImageObj('pen.jpg');
+    new ImageObj('pet-sweep.jpg');
+    new ImageObj('scissors.jpg');
+    new ImageObj('shark.jpg');
+    new ImageObj('sweep.png');
+    new ImageObj('tauntaun.jpg');
+    new ImageObj('unicorn.jpg');
+    new ImageObj('usb.gif');
+    new ImageObj('water-can.jpg');
+    new ImageObj('wine-glass.jpg');
+  }
 }
 
 // image object constructors
-function ImageObj(fileName) {
+function ImageObj(fileName, clicked = 0, shown = 0) {
   ImageObj.names.push(fileName.substring(0, fileName.length-4));
   this.fileName = fileName;
-  this.clicked = 0;
-  this.shown = 0;
+  this.clicked = clicked;
+  this.shown = shown;
   objArr.push(this);
 }
 
@@ -106,6 +116,8 @@ function refreshImages(){
     ImageObj.usedImgs = newUsed;
   }
   else {
+    // saves all of our results to local storage
+    saveVotes();
     // displays results and gets the name array
     var dataColors = displayResults();
     // here is where you notify users
@@ -229,6 +241,11 @@ function outOfTB(){
     amtToDisplay = userInputNum;
     refreshImages();
   });
+}
+
+// function that saves votes to local storage
+function saveVotes(){
+  localStorage.setItem('items', JSON.stringify(objArr));
 }
 
 // initialize variables and creates images
