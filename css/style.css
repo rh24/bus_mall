@@ -11,7 +11,8 @@ aside, footer, header, main, section, div{
 
 header, main, footer{
   width: 960px;
-  background-color: #ACE958
+  margin: 8px;
+  border-radius: 25px;
 }
 
 header, footer {
@@ -22,6 +23,11 @@ aside, section {
   display: inline-block;
   height: 100%;
   background-color:#C1FF6B;
+}
+
+section div{
+  background-color: #C1FF6B;
+  border-radius: 25px;
 }
 
 div {
@@ -43,12 +49,14 @@ footer {
 aside{
   height: 100%;
   width: 20%;
+  border-radius: 25px;
 }
 
 section {
   vertical-align: top;
   text-align: center;
   width: 79%;
+  border-radius: 25px;
 }
 
 #mainSection {
@@ -60,6 +68,7 @@ section {
   width: 100%;
   display: inline-block;
   vertical-align: top;
+  margin: 3px 10px 3px 0px;
 }
 
 img {
@@ -105,9 +114,9 @@ h2 {
   margin: 20px;
 }
 
-canvas {
+/* canvas {
   margin: 20px 0px;
-}
+} */
 
 h2, #results, .bodyText {
   font-family: 'Kaushan Script', cursive;
