@@ -174,7 +174,7 @@ function createCanvas(){
 function createChart(chart, clicked, colors, borderColors){
   var ctx = chart.getContext('2d');
   // creates the actual chart
-  var myChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
       labels: nameArr,

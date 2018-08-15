@@ -1,10 +1,10 @@
 body {
-  color: #374E17;
+  color: #801515;
   font-family: 'Homemade Apple', cursive, sans-serif, serif;
 }
 
 aside, footer, header, main, section, div{
-  /* border: 1px solid #374E17; */
+  /* border: 1px solid #801515; */
   margin: 0px;
   padding: 0px;
 }
@@ -16,17 +16,17 @@ header, main, footer{
 }
 
 header, footer {
-  background-color: #ACE958;
+  background-color: #D46A6A;
 }
 
 aside, section {
   display: inline-block;
   height: 100%;
-  background-color:#C1FF6B;
+  background-color:#FFAAAA;
 }
 
 section div{
-  background-color: #C1FF6B;
+  background-color: #FFAAAA;
   border-radius: 25px;
 }
 
@@ -87,8 +87,8 @@ ul {
 
 nav ul li {
   display: inline-block;
-  background-color: #C1FF6B;
-  color:  #374E17;
+  background-color: #FFAAAA;
+  color:  #801515;
   height: 25px;
   width: 150px;
   text-align: center;
@@ -100,8 +100,8 @@ li {
 }
 
 li:hover{
-  /* background-color: #374E17; */
-  color: #C1FF6B;
+  /* background-color: #801515; */
+  color: #FFAAAA;
 }
 
 h1 {
@@ -126,5 +126,5 @@ nav ul li {
   /* vertical-align: top; */
   /* margin: 0px; */
   /* padding: 0px; */
-  background-color: #ACE958;
+  background-color: #D46A6A;
 }
