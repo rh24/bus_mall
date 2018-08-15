@@ -1,5 +1,11 @@
 'use strict';
 
+// adds class arrays, one for used images and one for all images. also one for the object names
+// Need to declare this or else we can't make shortcuts
+ImageObj.names = [];
+ImageObj.allImages = [];
+ImageObj.usedImgs = [];
+
 // sets global variables
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
@@ -40,11 +46,6 @@ function ImageObj(fileName) {
   this.shown = 0;
   objArr.push(this);
 }
-
-// adds class arrays, one for used images and one for all images. also one for the object names
-ImageObj.names = [];
-ImageObj.allImages = [];
-ImageObj.usedImgs = [];
 
 // function to create the image HTML
 function createImage(imgObj){

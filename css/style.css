@@ -73,7 +73,7 @@ img:hover {
 }
 
 ul {
-  margin: 0px;
+  /* margin: 0px; */
 }
 
 nav ul li {
@@ -91,7 +91,7 @@ li {
 }
 
 li:hover{
-  background-color: #374E17;
+  /* background-color: #374E17; */
   color: #C1FF6B;
 }
 
@@ -115,6 +115,7 @@ h2, #results, .bodyText {
 
 nav ul li {
   /* vertical-align: top; */
-  margin: 0px;
-  padding: 0px;
+  /* margin: 0px; */
+  /* padding: 0px; */
+  background-color: #ACE958;
 }
