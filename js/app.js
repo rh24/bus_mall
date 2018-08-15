@@ -9,7 +9,7 @@ ImageObj.usedImgs = [];
 // sets global variables
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
-var amtToDisplay = 7;
+var amtToDisplay = 10;
 var appendTo = document.getElementById('mainSection');
 var clicks = 0;
 
