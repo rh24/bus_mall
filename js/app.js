@@ -218,7 +218,15 @@ function createChart(chart, clicked, colors, borderColors){
 function outOfTB(){
   var textbox = document.getElementById('itemNum');
   textbox.addEventListener('blur', function(){
-    amtToDisplay = Number(textbox.value);
+
+    // grabs user input
+    var userInputNum = Number(textbox.value);
+    // sets to max 10 if the number is greater than 10 or NaN
+    if(userInputNum > 10 || isNaN(userInputNum)){
+      userInputNum = 10;
+      textbox.value = 10;
+    }
+    amtToDisplay = userInputNum;
     refreshImages();
   });
 }
