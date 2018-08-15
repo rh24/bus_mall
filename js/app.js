@@ -133,6 +133,7 @@ function createEndText(){
   finishText.textContent = '25 Votes casted, results to the left';
   finishText.width = 650;
   
+  // appends text to let user know to look at results
   var bodyText = document.getElementById('instructions');
   clearTag(bodyText);
   bodyText.appendChild(finishText);
