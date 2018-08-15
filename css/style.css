@@ -13,6 +13,7 @@ header, main, footer{
   width: 960px;
   margin: 8px;
   border-radius: 25px;
+  text-align: center;
 }
 
 header, footer {
@@ -57,14 +58,22 @@ section {
   text-align: center;
   width: 79%;
   border-radius: 25px;
+  background-color: white;
 }
 
 #mainSection {
-  height: 79%;
+  height: 500px;
+  overflow: scroll;
+  margin-bottom: 3px;
+}
+
+#mainSection img{
+  width: 175px;
+  height: 175px;
 }
 
 .bodyText{
-  height: 20%;
+  height: 144px;
   width: 100%;
   display: inline-block;
   vertical-align: top;
@@ -75,6 +84,7 @@ img {
   margin: 2px;
   max-height: 600px;
   max-width: 600px;
+  border: 2px solid #FFAAAA;
 }
 
 img:hover {
