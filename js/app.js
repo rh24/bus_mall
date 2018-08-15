@@ -1,5 +1,13 @@
 'use strict';
 
+// sets global variables
+var objArr = ImageObj.allImages;
+var nameArr = ImageObj.names;
+var amtToDisplay = 7;
+var imgWidth = 600/amtToDisplay;
+var appendTo = document.getElementById('mainSection');
+var clicks = 0;
+
 // initializes all the images by making new objects
 function initializeImg() {
   new ImageObj('bag.jpg');
@@ -26,13 +34,15 @@ function initializeImg() {
 
 // image object constructors
 function ImageObj(fileName) {
+  ImageObj.names.push(fileName.substring(0, fileName.length-4));
   this.fileName = fileName;
-  this.name = fileName.substring(0, fileName.length-4);
   this.clicked = 0;
   this.shown = 0;
   objArr.push(this);
 }
-// adds two class arrays, one for used images and one for all images
+
+// adds class arrays, one for used images and one for all images. also one for the object names
+ImageObj.names = [];
 ImageObj.allImages = [];
 ImageObj.usedImgs = [];
 
@@ -87,9 +97,9 @@ function refreshImages(){
   }
   else {
     // displays results and gets the name array
-    var nameDataColors = displayResults();
+    var dataColors = displayResults();
     // here is where you notify users
-    createChart(createCanvas(), nameDataColors[0], nameDataColors[1], nameDataColors[2], nameDataColors[3]);
+    createChart(createCanvas(), dataColors[0], dataColors[1], dataColors[2]);
     // createEndText();
     createEndText();
   }
@@ -104,7 +114,7 @@ function clearTag(tag){
 
 // helper that creates the results display
 function displayResults(){
-  var name = [];
+  // var name = [];
   var clicked = [];
   var colors = [];
   var borderColors = [];
@@ -112,19 +122,18 @@ function displayResults(){
     var imageLI = document.createElement('li');
     var ul = document.getElementById('results');
 
-    // generates arrays for name, clicked count, colors to put in chart
-    name[i] = objArr[i].name;
+    // generates arrays for clicked count, colors to put in chart
     clicked[i] = objArr[i].clicked;
     colors[i] = randomColor('.4');
     borderColors[i] = randomColor('1');
 
     // Create the text inside
-    imageLI.textContent = `${objArr[i].name}: ${objArr[i].clicked} ${(objArr[i].clicked === 1)?'vote':'votes'}`;
+    imageLI.textContent = `${nameArr[i]}: ${objArr[i].clicked} ${(objArr[i].clicked === 1)?'vote':'votes'}`;
     ul.appendChild(imageLI);
   }
 
   // returns an array of name, click count, colors for later
-  return [name, clicked, colors, borderColors];
+  return [clicked, colors, borderColors];
 }
 
 // helper function that tells the user the end of voting
@@ -133,6 +142,7 @@ function createEndText(){
   finishText.textContent = '25 Votes casted, results to the left';
   finishText.width = 650;
   
+  // appends text to let user know to look at results
   var bodyText = document.getElementById('instructions');
   clearTag(bodyText);
   bodyText.appendChild(finishText);
@@ -160,13 +170,13 @@ function createCanvas(){
 }
 
 // function that creates the chart
-function createChart(chart, name, clicked, colors, borderColors){
+function createChart(chart, clicked, colors, borderColors){
   var ctx = chart.getContext('2d');
   // creates the actual chart
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: name,
+      labels: nameArr,
       datasets: [{
         label: '# of Votes',
         data: clicked,
@@ -193,13 +203,6 @@ function createChart(chart, name, clicked, colors, borderColors){
     }
   });
 }
-
-// sets global variables
-var amtToDisplay = 7;
-var objArr = ImageObj.allImages;
-var imgWidth = 600/amtToDisplay;
-var appendTo = document.getElementById('mainSection');
-var clicks = 0;
 
 // initialize variables and creates images
 initializeImg();

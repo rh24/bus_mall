@@ -29,7 +29,7 @@ div {
 }
 
 header {
-  height: 200px;
+  height: 150px;
 }
 
 main {
@@ -37,7 +37,7 @@ main {
 }
 
 footer {
-  height: 200px;
+  height: 100px;
 }
 
 aside{
@@ -101,6 +101,7 @@ h1 {
 }
 
 h2 {
+  font-size: 26px;
   margin: 20px;
 }
 
@@ -110,4 +111,10 @@ canvas {
 
 h2, #results, .bodyText {
   font-family: 'Kaushan Script', cursive;
+}
+
+nav ul li {
+  /* vertical-align: top; */
+  margin: 0px;
+  padding: 0px;
 }
