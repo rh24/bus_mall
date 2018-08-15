@@ -61,16 +61,22 @@ section {
 }
 
 #mainSection {
-  height: 475px;
+  height: 425px;
   overflow: scroll;
-  margin-bottom: 3px;
-  padding: 25px 20px 0px 20px;
+  /* padding: 25px 20px 0px 20px; */
+  padding: 0px;
 }
 
-#mainSection img{
+.mainContainer{
+  height: 475px;
+  margin-bottom: 3px;
+  padding-top: 25px;
+}
+
+/* #mainSection img{
   width: 175px;
   height: 175px;
-}
+} */
 
 .bodyText{
   height: 144px;
@@ -83,6 +89,8 @@ section {
 img {
   transition: 1s ease-in-out;
   margin: 2px;
+  min-height: 175px;
+  min-width: 175px;
   max-height: 600px;
   max-width: 600px;
   border: 2px solid #FFAAAA;
@@ -134,13 +142,13 @@ nav ul li {
 }
 
 #itemNum{
-  margin: 20px;
-}
-
-label{
-  margin-right: 10px;
+  margin: 15px;
 }
 
 p{
   margin-top: 25px;
+}
+
+input {
+  width: 15px;
 }

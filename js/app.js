@@ -10,6 +10,7 @@ ImageObj.usedImgs = [];
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
 var amtToDisplay = 3;
+var imgWidth = 175;
 var appendTo = document.getElementById('mainSection');
 var clicks = 0;
 
@@ -51,6 +52,17 @@ function createImage(imgObj){
   var imgTag = document.createElement('img');
   imgTag.src = `img/${imgObj.fileName}`;
   imgTag.alt = imgObj.fileName;
+
+  // change size if less than 3 items
+  if(amtToDisplay < 3){
+    imgWidth = 418/amtToDisplay;
+  }else{
+    imgWidth = 175;
+  }
+
+  // sets with and height
+  imgTag.width = `${imgWidth}`;
+  imgTag.height = `${imgWidth}`;
   appendTo.appendChild(imgTag);
 
   // returns the tag
