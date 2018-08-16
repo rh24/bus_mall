@@ -22,7 +22,6 @@ header, footer {
 aside, section {
   display: inline-block;
   height: 100%;
-  background-color:#FFAAAA;
 }
 
 section div{
@@ -50,6 +49,7 @@ aside{
   height: 100%;
   width: 20%;
   border-radius: 25px;
+  background-color:#FFAAAA;
 }
 
 section {
@@ -63,7 +63,6 @@ section {
 #mainSection {
   height: 425px;
   overflow: scroll;
-  /* padding: 25px 20px 0px 20px; */
   padding: 0px;
 }
 
@@ -72,11 +71,6 @@ section {
   margin-bottom: 3px;
   padding-top: 25px;
 }
-
-/* #mainSection img{
-  width: 175px;
-  height: 175px;
-} */
 
 .bodyText{
   height: 144px;
@@ -106,8 +100,6 @@ img:hover {
 
 nav ul li {
   display: inline-block;
-  background-color: #FFAAAA;
-  color:  #801515;
   height: 25px;
   width: 150px;
   text-align: center;
@@ -137,10 +129,6 @@ h2, #results, .bodyText {
   font-family: 'Kaushan Script', cursive;
 }
 
-nav ul li {
-  background-color: #D46A6A;
-}
-
 #itemNum{
   margin: 15px;
 }
@@ -154,9 +142,26 @@ input {
 }
 
 .primaryGreen{
-  background-color: #9DD27A;
+  background-color: #88EB83;
+}
+
+nav ul li.primaryGreen:hover{
+  color: #B6F6B3;
+  background-color: transparent;
 }
 
 img.primaryGreen{
-  border-color: #9DD27A;
+  border-color: #B6F6B3;
+}
+
+img.primaryGreen:hover{
+  border-color: #88EB83;
+}
+
+.secondaryGreen{
+  background-color: #B6F6B3;
+}
+
+.textGreen{
+  color: #39D231;
 }

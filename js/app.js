@@ -232,7 +232,7 @@ function createChart(chart, clicked, colors, borderColors){
 function outOfTB(){
   var textbox = document.getElementById('itemNum');
   textbox.addEventListener('blur', function(){
-
+    
     // grabs user input
     var userInputNum = Number(textbox.value);
     // sets to max 10 if the number is greater than 10 or NaN
@@ -245,13 +245,89 @@ function outOfTB(){
   });
 }
 
+// function that adds a listener to change color themes
+function addColorListener(){
+  var childLI = document.querySelectorAll('nav ul li');
+
+  // you can't pass i into event listeners since they are the same scope and event handlers will execute after the for loop
+  for(var i = 0; i < childLI.length; i++){
+    // so you have to pass it into a closure function that is immediately invoked to use i
+    (function(index){ // I hate life :(
+      childLI[index].addEventListener('click', function(){
+        changeColors(colorArr[index]);
+      });
+    })(i); // immediately invoke with i
+  }
+}
+
+// function that actually sets all of the element's colors by adding classes
+function changeColors(color){
+  // makes sure to clear the colors first
+  clearColors();
+
+  // if no color, just clear
+  if(color){
+    // sets the classes for each tag to change the colors
+    getFirstTagCL('header').add(`primary${color}`);
+    getFirstTagCL('footer').add(`primary${color}`);
+    getFirstTagCL('aside').add(`secondary${color}`);
+    getFirstTagCL('body').add(`text${color}`);
+
+    // uses a helper function to set a class to all children
+    var ulColor = getFirstTag('ul');
+    setChildrenColor(ulColor.children, `primary${color}`);
+    setChildrenColor(document.getElementsByTagName('img'), `primary${color}`);
+    setChildrenColor(document.getElementsByTagName('div'), `secondary${color}`);
+  }
+}
+
+// adds class to the children
+function setChildrenColor(tagCollection, className){
+  for(var i = 0; i < tagCollection.length; i++){
+    tagCollection[i].classList.add(className);
+  }
+}
+
+function clearColors(){
+  for(var i = 0; i < colorArr.length; i++){
+    // sets the classes for each tag to change the colors
+    getFirstTagCL('header').remove(`primary${colorArr[i]}`);
+    getFirstTagCL('footer').remove(`primary${colorArr[i]}`);
+    getFirstTagCL('aside').remove(`secondary${colorArr[i]}`);
+    getFirstTagCL('body').remove(`text${colorArr[i]}`);
+
+    // uses a helper function to set a class to all children
+    var ulColor = getFirstTag('ul');
+    removeChildrenColor(ulColor.children, `primary${colorArr[i]}`);
+    removeChildrenColor(document.getElementsByTagName('img'), `primary${colorArr[i]}`);
+    removeChildrenColor(document.getElementsByTagName('div'), `secondary${colorArr[i]}`);
+  }
+}
+
+// adds class to the children
+function removeChildrenColor(tagCollection, className){
+  for(var i = 0; i < tagCollection.length; i++){
+    tagCollection[i].classList.remove(className);
+  }
+}
+
+// returns the classlist of a tag because I hate typing
+function getFirstTagCL(tag){
+  return getFirstTag(tag).classList;
+}
+
+// same as above but for the first tag
+function getFirstTag(tag){
+  return document.getElementsByTagName(tag)[0];
+}
+
 // function that saves votes to local storage
 function saveVotes(){
   localStorage.setItem('items', JSON.stringify(objArr));
 }
-
+var colorArr = [null, 'Green', 'Blue'];
 // initialize variables and creates images
 initializeImg();
-//addCloseListener();
+addColorListener();
 outOfTB();
 refreshImages();
