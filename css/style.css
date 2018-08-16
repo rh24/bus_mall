@@ -165,3 +165,28 @@ img.primaryGreen:hover{
 .textGreen{
   color: #39D231;
 }
+
+.primaryBlue{
+  background-color: #397FF5;
+}
+
+nav ul li.primaryBlue:hover{
+  color: #629CFF;
+  background-color: transparent;
+}
+
+img.primaryBlue{
+  border-color: #629CFF;
+}
+
+img.primaryBlue:hover{
+  border-color: #397FF5;
+}
+
+.secondaryBlue{
+  background-color: #629CFF;
+}
+
+.textBlue{
+  color: #0D3D8F;
+}
