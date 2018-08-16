@@ -234,6 +234,7 @@ function outOfTB(){
 // adds a reset listener to button
 function addResetListener() {
   getFirstTag('footer').children[0].addEventListener('click', function(){
+    clearTag(document.getElementById('results'));
     clearObjects();
     refreshImages();
     saveVotes();
@@ -243,6 +244,8 @@ function addResetListener() {
 // clears all objects and creates new ones
 function clearObjects() {
   objArr = [];
+  ImageObj.names = [];
+  // ImageObj.usedImgs = [];
   new ImageObj('bag.jpg');
   new ImageObj('banana.jpg');
   new ImageObj('bathroom.jpg');
@@ -263,6 +266,7 @@ function clearObjects() {
   new ImageObj('usb.gif');
   new ImageObj('water-can.jpg');
   new ImageObj('wine-glass.jpg');
+  clicks = 0;
 }
 
 // function that adds a listener to change color themes
