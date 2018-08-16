@@ -89,7 +89,7 @@ function refreshImages(){
     // here is where you notify users
     createChart(createCanvas(), dataColors[0], dataColors[1], dataColors[2]);
     // createEndText();
-    createEndText();
+    createEndText('25 Votes casted, results to the left', 'h2');
   }
 }
 
@@ -147,9 +147,9 @@ function displayResults(){
 }
 
 // helper function that tells the user the end of voting
-function createEndText(){
-  var finishText = document.createElement('h2');
-  finishText.textContent = '25 Votes casted, results to the left';
+function createEndText(text, tag){
+  var finishText = document.createElement(tag);
+  finishText.textContent = text;
   finishText.width = 650;
 
   // appends text to let user know to look at results
@@ -237,7 +237,9 @@ function addResetListener() {
     clearTag(document.getElementById('results'));
     clearObjects();
     refreshImages();
-    saveVotes();
+    window.location.reload();
+    // createEndText('Click on an image to vote for it.', p);
+    // saveVotes();
   });
 }
 
@@ -245,7 +247,6 @@ function addResetListener() {
 function clearObjects() {
   objArr = [];
   ImageObj.names = [];
-  // ImageObj.usedImgs = [];
   new ImageObj('bag.jpg');
   new ImageObj('banana.jpg');
   new ImageObj('bathroom.jpg');
