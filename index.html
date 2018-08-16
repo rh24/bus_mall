@@ -15,9 +15,9 @@
   <header>
       <nav>
           <ul>
-            <li><a>Home</a></li>
-            <li><a>About</a></li>
-            <li><a>Contact</a></li>
+            <li><a>Red Theme</a></li>
+            <li><a>Green Theme</a></li>
+            <li><a>Blue Theme</a></li>
           </ul>
         </nav>
     <h1>Bus Mall</h1>
@@ -29,15 +29,20 @@
       </ul>
     </aside>
     <section>
-      <div id="mainSection">
+      <div class="mainContainer">
+        <div id="mainSection">
+        </div>
       </div>
       <div id="instructions" class="bodyText">
-        Click on an image to vote for it.
+        <p>Click on an image to vote for it.</p>
+        <div class="itemNum">
+          <label for="itemNum">Amount of Items to display on page (max 10):</label><input type="text" id="itemNum" name="itemNum" max="10" size="2" value="3">
+        </div>
       </div>
     </section>
   </main>
   <footer>
-
+    <input type="button" value="DO NOT PUSH">
   </footer>
   <script src="js/app.js"></script>
 </body>
