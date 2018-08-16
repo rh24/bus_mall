@@ -46,6 +46,8 @@ function initializeImg() {
     new ImageObj('water-can.jpg');
     new ImageObj('wine-glass.jpg');
   }
+  // saves state when window closes
+  window.onunload = window.onbeforeunload = saveVotes;
 }
 
 // image object constructors
@@ -250,5 +252,6 @@ function saveVotes(){
 
 // initialize variables and creates images
 initializeImg();
+//addCloseListener();
 outOfTB();
 refreshImages();
