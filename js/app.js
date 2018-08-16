@@ -34,6 +34,7 @@ function initializeImg() {
 
 // image object constructors
 function ImageObj(fileName, clicked = 0, shown = 0) {
+  // takes the file name and parses it to give it a name
   ImageObj.names.push(fileName.substring(0, fileName.length-4));
   this.fileName = fileName;
   this.clicked = clicked;
@@ -234,6 +235,7 @@ function outOfTB(){
 function addResetListener() {
   getFirstTag('footer').children[0].addEventListener('click', function(){
     clearObjects();
+    refreshImages();
     saveVotes();
   });
 }
