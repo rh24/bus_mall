@@ -9,9 +9,10 @@ ImageObj.usedImgs = [];
 // sets global variables
 var objArr = ImageObj.allImages;
 var nameArr = ImageObj.names;
+var colorArr = [null, 'Green', 'Blue'];
+var appendTo = document.getElementById('mainSection');
 var amtToDisplay = 3;
 var imgWidth = 175;
-var appendTo = document.getElementById('mainSection');
 var clicks = 0;
 
 // initializes all the images by making new objects
@@ -24,27 +25,8 @@ function initializeImg() {
       new ImageObj(loadedItems[i].fileName, loadedItems[i].clicked, loadedItems[i].shown);
     }
   }
-  else { // else create new items
-    new ImageObj('bag.jpg');
-    new ImageObj('banana.jpg');
-    new ImageObj('bathroom.jpg');
-    new ImageObj('breakfast.jpg');
-    new ImageObj('bubblegum.jpg');
-    new ImageObj('boots.jpg');
-    new ImageObj('chair.jpg');
-    new ImageObj('cthulhu.jpg');
-    new ImageObj('dog-duck.jpg');
-    new ImageObj('dragon.jpg');
-    new ImageObj('pen.jpg');
-    new ImageObj('pet-sweep.jpg');
-    new ImageObj('scissors.jpg');
-    new ImageObj('shark.jpg');
-    new ImageObj('sweep.png');
-    new ImageObj('tauntaun.jpg');
-    new ImageObj('unicorn.jpg');
-    new ImageObj('usb.gif');
-    new ImageObj('water-can.jpg');
-    new ImageObj('wine-glass.jpg');
+  else { // else clear objects and create new items
+    clearObjects();
   }
   // saves state when window closes
   window.onunload = window.onbeforeunload = saveVotes;
@@ -59,34 +41,15 @@ function ImageObj(fileName, clicked = 0, shown = 0) {
   objArr.push(this);
 }
 
-// function to create the image HTML
-function createImage(imgObj){
-  var imgTag = document.createElement('img');
-  imgTag.src = `img/${imgObj.fileName}`;
-  imgTag.alt = imgObj.fileName;
-
-  // change size if less than 3 items
-  if(amtToDisplay < 3){
-    imgWidth = 418/amtToDisplay;
-  }else{
-    imgWidth = 175;
-  }
-
-  // sets with and height
-  imgTag.width = `${imgWidth}`;
-  imgTag.height = `${imgWidth}`;
-  appendTo.appendChild(imgTag);
-
-  // returns the tag
-  return imgTag;
-}
-
 // adds handler to each images
 function addHandler(tag, objImg){
-  objImg.shown++; // adds to shown
-
-  // adds the listerner
+  // adds the listener
   tag.addEventListener('click', function(){
+    // runs through each item that has been used, only adds to all 3 shown when 1 has been clicked
+    for(var i = 0; i < ImageObj.usedImgs.length; i++){
+      ImageObj.usedImgs[i].shown++; // adds to the shown value
+    }
+    // updates clicks
     objImg.clicked++;
     clicks++;
     refreshImages();
@@ -106,12 +69,12 @@ function refreshImages(){
       // while the images were previously used or have just been added this iteration, find another image
       do {
         objNum = Math.floor(Math.random()*objArr.length);
-      } while(ImageObj.usedImgs.includes(objNum) || newUsed.includes(objNum));
+      } while(ImageObj.usedImgs.includes(objArr[objNum]) || newUsed.includes(objArr[objNum]));
 
       // finds the object and adds an event listener to it
       var objImg = objArr[objNum];
-      newUsed.push(objNum);
-      addHandler(createImage(objImg), objImg);
+      newUsed.push(objImg);
+      addHandler(createImageTag(objImg), objImg);
     }
 
     // resets the previously used array, updates the click count
@@ -127,6 +90,28 @@ function refreshImages(){
     // createEndText();
     createEndText();
   }
+}
+
+// function to create the image HTML
+function createImageTag(imgObj){
+  var imgTag = document.createElement('img');
+  imgTag.src = `img/${imgObj.fileName}`;
+  imgTag.alt = imgObj.fileName;
+
+  // change size if less than 3 items
+  if(amtToDisplay < 3){
+    imgWidth = 418/amtToDisplay;
+  }else{
+    imgWidth = 175;
+  }
+
+  // sets with and height
+  imgTag.width = `${imgWidth}`;
+  imgTag.height = `${imgWidth}`;
+  appendTo.appendChild(imgTag);
+
+  // returns the tag
+  return imgTag;
 }
 
 // function that clears all of the images
@@ -245,6 +230,39 @@ function outOfTB(){
   });
 }
 
+// adds a reset listener to button
+function addResetListener() {
+  getFirstTag('footer').children[0].addEventListener('click', function(){
+    clearObjects();
+    saveVotes();
+  });
+}
+
+// clears all objects and creates new ones
+function clearObjects() {
+  objArr = [];
+  new ImageObj('bag.jpg');
+  new ImageObj('banana.jpg');
+  new ImageObj('bathroom.jpg');
+  new ImageObj('breakfast.jpg');
+  new ImageObj('bubblegum.jpg');
+  new ImageObj('boots.jpg');
+  new ImageObj('chair.jpg');
+  new ImageObj('cthulhu.jpg');
+  new ImageObj('dog-duck.jpg');
+  new ImageObj('dragon.jpg');
+  new ImageObj('pen.jpg');
+  new ImageObj('pet-sweep.jpg');
+  new ImageObj('scissors.jpg');
+  new ImageObj('shark.jpg');
+  new ImageObj('sweep.png');
+  new ImageObj('tauntaun.jpg');
+  new ImageObj('unicorn.jpg');
+  new ImageObj('usb.gif');
+  new ImageObj('water-can.jpg');
+  new ImageObj('wine-glass.jpg');
+}
+
 // function that adds a listener to change color themes
 function addColorListener(){
   var childLI = document.querySelectorAll('nav ul li');
@@ -325,9 +343,10 @@ function getFirstTag(tag){
 function saveVotes(){
   localStorage.setItem('items', JSON.stringify(objArr));
 }
-var colorArr = [null, 'Green', 'Blue'];
+
 // initialize variables and creates images
 initializeImg();
 addColorListener();
+addResetListener();
 outOfTB();
 refreshImages();
